@@ -5,23 +5,30 @@ jQuery(document).ready(function	(){
 
 	$('#word-form').submit(function(e){
 
-		var p = {};
-		p.a = p.e = p.i = p.o = p.u = p.l = p.n = p.r = p.s = p.t = 1;
-		p.d = p.g = 2;
-		p.b = p.c = p.m = p.p = 3;
-		p.f = p.h = p.w = p.w = p.y =4;
-		p.k = 5;
-		p.j = p.x = 8;
-		p.x = p.z = 10;
+		var points = {};
+
+
+		function addPropertiesInObject (string,value){
+			string = string.toLowerCase();
+			var stringArray = string.split(", ");
+
+			stringArray.forEach(function(letter){
+				points[letter] = value;
+			});
+		}
+		addPropertiesInObject ("A, E, I, O, U, L, N, R, S, T", 1);
+		addPropertiesInObject ("D, G",2);
+		addPropertiesInObject ("B, C, M, P", 3);
+		addPropertiesInObject ("F, H, V, W, Y",4);
+		addPropertiesInObject ("K", 5);
+		addPropertiesInObject ("J, X",8);
+		addPropertiesInObject ("Q, Z",10);
 
 		var letterArray  = [];
 		var word = $("#word").val();
 		word = word.toLowerCase();
 
 
-
-
-//почему если запихнуть в функцию, то перестает работать? (sumArray is not defined)
 		function arrayFromWord(word) {
 			for (var i = 0; i < word.length; i++) {
 				letterArray.push(word[i])
@@ -29,10 +36,10 @@ jQuery(document).ready(function	(){
 
 			var sumArray = [];
 
-			for (var key in p) {
+			for (var key in points) {
 				letterArray.forEach(function (letter) {
 					if (key == letter) {
-						sumArray.push(p[key])
+						sumArray.push(points[key])
 					}
 				})
 			}
@@ -70,16 +77,11 @@ jQuery(document).ready(function	(){
 });
 
 
-
-/*
- интересно, почему так нельзя сделать?
- var points = {};
- var string ="A, E, I, O, U, L, N, R, S, T";
- string = string.toLowerCase();
- var stringArray = string.split(", ");
-
- stringArray.forEach(function(letter){
- points[letter] = 1;
- });
- */
+/*A, E, I, O, U, L, N, R, S, T       1
+ D, G                               2
+ B, C, M, P                         3
+ F, H, V, W, Y                      4
+ K                                  5
+ J, X                               8
+ Q, Z                               10*/
 
