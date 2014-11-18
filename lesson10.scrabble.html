@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lesson8.homework</title>
+	<link rel='stylesheet' href='css/bootstrap.css' type='text/css' media='all'>
+	<link rel = "stylesheet" href="css/style.css">
+	<meta charset="utf-8">
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/scripts.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+	<h1>Hi! It's point-checker for Scrabble</h1>
+	<h3>Please enter your word</h3>
+	<form id="word-form">
+		<div id="for-word">
+			<div class="form-group">
+				<label for="word"></label>
+				<input id="word"
+					   class="form-control word"
+					   type="text">
+			</div>
+		</div>
+
+		<div class=" row for-result">
+			<h3>Great! You have <span class = "sum"></span> points!</h3>
+		</div>
+		<button type="submit" class="btn btn-primary">Let's count!</button>
+	</form>
+	<div class="col-md-6">
+		<table class="table table-bordered">
+			<caption>reference table</caption>
+			<tr>
+				<th>Letters</th><th>Points</th>
+			</tr>
+			<tr>
+				<td>A, E, I, O, U, L, N, R, S, T</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>D, G </td>
+				<td>2</td>
+			</tr>
+			<tr>
+				<td>B, C, M, P  </td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>F, H, V, W, Y   </td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>K </td>
+				<td>5</td>
+			</tr>
+			<tr>
+				<td>J, X </td>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>Q, Z   </td>
+				<td>10</td>
+			</tr>
+		</table>
+	</div>
+</div>
+</body>
+</html>
+
