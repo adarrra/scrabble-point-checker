@@ -16,27 +16,33 @@ jQuery(document).ready(function	(){
 
 		var letterArray  = [];
 		var word = $("#word").val();
-		var word = word.toLowerCase();
+		word = word.toLowerCase();
+
+
 
 
 //почему если запихнуть в функцию, то перестает работать? (sumArray is not defined)
-		for (var i = 0; i < word.length; i++) {
-			letterArray.push(word[i])
+		function arrayFromWord(word) {
+			for (var i = 0; i < word.length; i++) {
+				letterArray.push(word[i])
+			}
+
+			var sumArray = [];
+
+			for (var key in p) {
+				letterArray.forEach(function (letter) {
+					if (key == letter) {
+						sumArray.push(p[key])
+					}
+				})
+			}
+
+			return sumArray;
 		}
 
-		var sumArray = [];
-
-		for (var key in p) {
-			letterArray.forEach(function (letter) {
-				if (key == letter) {
-					sumArray.push(p[key])
-				}
-			})
-		}
-
-		function sumArr(){
+		function sumArr(sumArray){
 			var sum = 0;
-			for(i=0; i<sumArray.length; i++){
+			for(i=0; i < sumArray.length; i++){
 				sum += sumArray[i];
 			}
 			return sum;
@@ -45,8 +51,10 @@ jQuery(document).ready(function	(){
 
 		$('.for-result').show();
 
+		var sumArray = arrayFromWord(word);
 
-		$(".sum").empty().append(sumArr());
+
+		$(".sum").empty().append(sumArr(sumArray));
 
 
 
@@ -64,14 +72,14 @@ jQuery(document).ready(function	(){
 
 
 /*
-интересно, почему так нельзя сделать?
+ интересно, почему так нельзя сделать?
  var points = {};
-var string ="A, E, I, O, U, L, N, R, S, T";
-string = string.toLowerCase();
-var stringArray = string.split(", ");
+ var string ="A, E, I, O, U, L, N, R, S, T";
+ string = string.toLowerCase();
+ var stringArray = string.split(", ");
 
-stringArray.forEach(function(letter){
-	points[letter] = 1;
-});
-*/
+ stringArray.forEach(function(letter){
+ points[letter] = 1;
+ });
+ */
 
